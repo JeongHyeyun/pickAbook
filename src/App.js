@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
+function PropsTest(props) {
+  console.log(props);
+  // {aaa} = props;
+  return (
+    <div>
+      <h3>{props.test}</h3>
+      <h3></h3>
+    </div>
+  );
+}
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>test</h1>
+      <PropsTest test="xxxxx" array={[1, 2, 3, 4, 5]} bool={true}/>
     </div>
   );
 }
