@@ -6,10 +6,18 @@ class App extends React.Component {
     isLoading: true,  // 로딩여부
     movies: [],  // 보여줄 영화 정보를 담는 배열
   };
+  getMovies = async () => {  // 영화 리스트를 호출하는 함수
+    const {
+      data: {
+        data: {
+          movies
+        },
+      }
+    } = await axios.get('https://yts-proxy.now.sh/list_movies.json');
+    this.setState({ isLoading: false, movies });  // state값 변경 (data를 다 불러오면 loading 완료 표시)
+  }
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ isLoading: false, moveis: []});  // state값 변경
-    }, 5000); // 5초 뒤
+    this.getMovies();  // 함수호출
   }
   render() {
     const { isLoading } = this.state; // state에서 isLoading 값 추출
